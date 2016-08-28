@@ -43,15 +43,16 @@ namespace CameraUWP
                 return;
             }
 
-            //StorageFolder destinationFolder = await ApplicationData.Current.LocalFolder.CreateFolderAsync(
-            //"ProfilePhotoFolder",
-            //CreationCollisionOption.OpenIfExists);
-
             var picturesLibrary = await StorageLibrary.GetLibraryAsync(KnownLibraryId.Pictures);
             var destinationFolder = picturesLibrary.SaveFolder;
 
-            await photo.CopyAsync(destinationFolder, "ProfilePhoto.jpg", NameCollisionOption.ReplaceExisting);
+            var file = await photo.CopyAsync(
+                destinationFolder, 
+                "EmotionPhoto.jpg", 
+                NameCollisionOption.GenerateUniqueName);
             await photo.DeleteAsync();
+
+            Frame.Navigate(typeof(ResultPage), file);
         }
 
         private void PhotoButton_Click(object sender, RoutedEventArgs e)

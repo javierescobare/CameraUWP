@@ -1,0 +1,73 @@
+﻿<Page
+    x:Class="CameraUWP.ResultPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CameraUWP"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <ScrollViewer Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Padding="10">
+        <Grid>
+            <Grid Name="PageContent">
+                <Grid.Resources>
+                    <local:PercentageConverter x:Name="PercentageConverter" />
+                </Grid.Resources>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Image Name="Picture" HorizontalAlignment="Center" MaxWidth="300"/>
+                <StackPanel Grid.Row="1">
+                    <TextBlock>
+                    <Run Text="Enojo:" />
+                    <Run Text="{Binding Anger, Converter={StaticResource PercentageConverter}}" />
+                    <Run Text="%" />
+                    </TextBlock>
+                    <TextBlock>
+                    <Run Text="Desprecio:" />
+                    <Run Text="{Binding Contempt, Converter={StaticResource PercentageConverter}}" />
+                    <Run Text="%" />
+                    </TextBlock>
+                    <TextBlock>
+                    <Run Text="Disgusto:" />
+                    <Run Text="{Binding Disgust, Converter={StaticResource PercentageConverter}}" />
+                    <Run Text="%" />
+                    </TextBlock>
+                    <TextBlock>
+                    <Run Text="Miedo:"/>
+                    <Run Text="{Binding Fear, Converter={StaticResource PercentageConverter}}" />
+                    <Run Text="%" />
+                    </TextBlock>
+                    <TextBlock>
+                    <Run Text="Felicidad:"/>
+                    <Run Text="{Binding Happiness, Converter={StaticResource PercentageConverter}}" />
+                    <Run Text="%" />
+                    </TextBlock>
+                    <TextBlock>
+                    <Run Text="Neutral:" />
+                    <Run Text="{Binding Neutral, Converter={StaticResource PercentageConverter}}" />
+                    <Run Text="%" />
+                    </TextBlock>
+                    <TextBlock>
+                    <Run Text="Tristeza:" />
+                    <Run Text="{Binding Sadness, Converter={StaticResource PercentageConverter}}" />
+                    <Run Text="%" />
+                    </TextBlock>
+                    <TextBlock>
+                    <Run Text="Sorpresa:" />
+                    <Run Text="{Binding Surprise, Converter={StaticResource PercentageConverter}}" />
+                    <Run Text="%" />
+                    </TextBlock>
+                </StackPanel>
+            </Grid>
+            <ProgressRing Name="MyProgressRing"
+                      Width="100"
+                      Height="100"
+                      Foreground="Gray"
+                      VerticalAlignment="Center"
+                      HorizontalAlignment="Center" />
+        </Grid>
+    </ScrollViewer>
+</Page>
