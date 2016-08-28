@@ -8,6 +8,14 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Button Name="PhotoButton" Content="Take a pic" Click="PhotoButton_Click" HorizontalAlignment="Center"/>
+        <Grid Name="PageContent">
+            <Button Name="PhotoButton" Content="Take a pic" Click="PhotoButton_Click" HorizontalAlignment="Center"/>
+        </Grid>
+        <ProgressRing Name="MyProgressRing"
+                      Width="100"
+                      Height="100"
+                      Foreground="Gray"
+                      VerticalAlignment="Center"
+                      HorizontalAlignment="Center" />
     </Grid>
 </Page>
