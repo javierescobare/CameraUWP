@@ -43,9 +43,12 @@ namespace CameraUWP
                 return;
             }
 
-            StorageFolder destinationFolder = await ApplicationData.Current.LocalFolder.CreateFolderAsync(
-                "ProfilePhotoFolder",
-                CreationCollisionOption.OpenIfExists);
+            //StorageFolder destinationFolder = await ApplicationData.Current.LocalFolder.CreateFolderAsync(
+            //"ProfilePhotoFolder",
+            //CreationCollisionOption.OpenIfExists);
+
+            var picturesLibrary = await StorageLibrary.GetLibraryAsync(KnownLibraryId.Pictures);
+            var destinationFolder = picturesLibrary.SaveFolder;
 
             await photo.CopyAsync(destinationFolder, "ProfilePhoto.jpg", NameCollisionOption.ReplaceExisting);
             await photo.DeleteAsync();
