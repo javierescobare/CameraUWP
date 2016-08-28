@@ -38,24 +38,6 @@ namespace CameraUWP
         {
             this.InitializeComponent();
             emotionClient = new EmotionServiceClient(SUBSCRIPTION_KEY);
-
-            SystemNavigationManager.GetForCurrentView().BackRequested +=
-                App_BackRequested;
-        }
-
-        private void App_BackRequested(object sender, BackRequestedEventArgs e)
-        {
-            Frame rootFrame = Window.Current.Content as Frame;
-            if (rootFrame == null)
-                return;
-
-            // Navigate back if possible, and if the event has not 
-            // already been handled .
-            if (rootFrame.CanGoBack && e.Handled == false)
-            {
-                e.Handled = true;
-                rootFrame.GoBack();
-            }
         }
 
         protected async override void OnNavigatedTo(NavigationEventArgs e)
@@ -64,19 +46,6 @@ namespace CameraUWP
             photo = (StorageFile)e.Parameter;
 
             Frame rootFrame = Window.Current.Content as Frame;
-
-            if (rootFrame.CanGoBack)
-            {
-                // Show UI in title bar if opted-in and in-app backstack is not empty.
-                SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility =
-                    AppViewBackButtonVisibility.Visible;
-            }
-            else
-            {
-                // Remove the UI from the title bar if in-app back stack is empty.
-                SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility =
-                    AppViewBackButtonVisibility.Collapsed;
-            }
 
             MyProgressRing.IsActive = true;
             MyProgressRing.Visibility = Visibility.Visible;
